@@ -26,5 +26,5 @@ jobs:
         run: poetry install
       - name: Merge source files
         run: |
-          python merge.py ./git-advanced/presentation/config.json
-          python merge.py ./gitlab-ci/presentation/config.json
+          poetry run python merge.py ./git-advanced/presentation/config.json
+          poetry run python merge.py ./gitlab-ci/presentation/config.json
