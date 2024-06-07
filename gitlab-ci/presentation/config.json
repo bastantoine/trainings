@@ -1,0 +1,34 @@
+{
+    "frontmatter_file": "frontmatter.md",
+    "configs": [
+        {
+            "base_path": "./jour-1",
+            "input_files": [
+                "intro.md",
+                "1-quest-ce-quune-chaine-de-cicd.md",
+                "2-architecture-de-base-des-pipelines-gitlab-cicd.md",
+                "3-contexte-dexecution-des-pipelines.md"
+            ],
+            "output_file": "jour-1.md"
+        },
+        {
+            "base_path": "./jour-2",
+            "input_files": [
+                "intro.md",
+                "1-architecture-avancee.md",
+                "1-architecture-avancee/acceleration-de-lexecution-des-jobs.md",
+                "1-architecture-avancee/factorisation-de-la-config.md",
+                "1-architecture-avancee/dependances-inter-jobs.md",
+                "1-architecture-avancee/downstream-pipelines.md",
+                "1-architecture-avancee/services.md",
+                "2-runner-executors.md",
+                "3-integration-avec-des-outils-externes.md",
+                "3-integration-avec-des-outils-externes/gestion-des-environnements-de-deploiement.md",
+                "3-integration-avec-des-outils-externes/integration-de-terraform.md",
+                "3-integration-avec-des-outils-externes/gestion-des-secrets-avec-vault.md",
+                "outro.md"
+            ],
+            "output_file": "jour-2.md"
+        }
+    ]
+}

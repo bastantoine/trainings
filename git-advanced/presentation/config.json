@@ -1,0 +1,15 @@
+{
+    "frontmatter_file": "frontmatter.md",
+    "configs": [
+        {
+            "base_path": "./content",
+            "input_files": [
+                "0-intro.md",
+                "1-objects.md",
+                "2-working-locally.md",
+                "3-remotes.md"
+            ],
+            "output_file": "prez.md"
+        }
+    ]
+}
