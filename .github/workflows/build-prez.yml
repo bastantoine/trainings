@@ -33,9 +33,9 @@ jobs:
           name: merged-files
           retention-days: 1
           path: |
-            git-advanced/presentation/content/output/prez.md
-            gitlab-ci/presentation/jour-1/output/jour-1.md
-            gitlab-ci/presentation/jour-2/output/jour-2.md
+            git-advanced/presentation/content/output/git-advanced.md
+            gitlab-ci/presentation/jour-1/output/gitlab-ci-jour-1.md
+            gitlab-ci/presentation/jour-2/output/gitlab-ci-jour-2.md
 
   build:
     runs-on: ubuntu-latest
