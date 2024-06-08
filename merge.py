@@ -21,6 +21,7 @@ def merge_markdown_files(
             merged += content + "\n\n---\n\n"
 
     merged = merged.replace("../Attachements", "Attachements")
+    logger.info(f"Done merging {len(input_files)} file(s) into {output_file}")
     with open(output_file, "w") as output:
         output.write(merged)
 
