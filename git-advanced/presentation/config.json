@@ -9,7 +9,7 @@
                 "2-working-locally.md",
                 "3-remotes.md"
             ],
-            "output_file": "output/prez.md"
+            "output_file": "output/git-advanced.md"
         }
     ]
 }
