@@ -22,6 +22,8 @@ def merge_markdown_files(
 
     merged = merged.replace("../Attachements", "Attachements")
     logger.info(f"Done merging {len(input_files)} file(s) into {output_file}")
+    output_file = Path(output_file)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
     with open(output_file, "w") as output:
         output.write(merged)
 
