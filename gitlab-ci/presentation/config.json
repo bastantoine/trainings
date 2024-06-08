@@ -9,7 +9,7 @@
                 "2-architecture-de-base-des-pipelines-gitlab-cicd.md",
                 "3-contexte-dexecution-des-pipelines.md"
             ],
-            "output_file": "jour-1.md"
+            "output_file": "output/jour-1.md"
         },
         {
             "base_path": "./jour-2",
@@ -28,7 +28,7 @@
                 "3-integration-avec-des-outils-externes/gestion-des-secrets-avec-vault.md",
                 "outro.md"
             ],
-            "output_file": "jour-2.md"
+            "output_file": "output/jour-2.md"
         }
     ]
 }
