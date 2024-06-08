@@ -10,7 +10,6 @@ permissions:
 jobs:
   merge-source-files:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python 3.11
@@ -37,3 +36,37 @@ jobs:
             git-advanced/presentation/content/output/prez.md
             gitlab-ci/presentation/jour-1/output/jour-1.md
             gitlab-ci/presentation/jour-2/output/jour-2.md
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get Marp CLI
+        uses: robinraju/release-downloader@v1.10
+        with:
+          repository: "marp-team/marp-cli"
+          fileName: "marp-cli-*-linux.tar.gz"
+          latest: true
+          extract: true
+      - name: Generate HTML files
+        run: |
+          marp -I git-advanced/presentation/content/output --allow-local-files --output _site
+          marp -I gitlab-ci/presentation/jour-1/output --allow-local-files --output _site
+          marp -I gitlab-ci/presentation/jour-2/output --allow-local-files --output _site
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # to deploy to Pages
+      id-token: write # to verify the deployment originates from an appropriate source
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
