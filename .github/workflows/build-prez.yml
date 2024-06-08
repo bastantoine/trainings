@@ -49,6 +49,10 @@ jobs:
           fileName: "marp-cli-*-linux.tar.gz"
           latest: true
           extract: true
+      - name: Download merged files
+        uses: actions/download-artifact@v4
+        with:
+          name: merged-files
       - name: Generate HTML files
         run: |
           ./marp -I git-advanced/presentation/content/output --allow-local-files --output _site
