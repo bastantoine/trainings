@@ -1,4 +1,4 @@
-name: Build presentations PDFs
+name: Build presentations
 
 on:
   push:
