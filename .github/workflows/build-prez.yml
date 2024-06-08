@@ -22,11 +22,13 @@ jobs:
           pip install poetry
           poetry config virtualenvs.in-project true
       - name: Install dependencies
+        working-directory: tools/merge
         run: poetry install
       - name: Merge source files
+        working-directory: tools/merge
         run: |
-          poetry run python merge.py ./git-advanced/presentation/config.json
-          poetry run python merge.py ./gitlab-ci/presentation/config.json
+          poetry run python merge.py ../../git-advanced/presentation/config.json
+          poetry run python merge.py ../../gitlab-ci/presentation/config.json
       - name: Store merged files
         uses: actions/upload-artifact@v4
         with:
