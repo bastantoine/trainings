@@ -28,3 +28,12 @@ jobs:
         run: |
           poetry run python merge.py ./git-advanced/presentation/config.json
           poetry run python merge.py ./gitlab-ci/presentation/config.json
+      - name: Store merged files
+        uses: actions/upload-artifact@v4
+        with:
+          name: merged-files
+          retention-days: 1
+          path: |
+            git-advanced/presentation/content/prez.md
+            gitlab-ci/presentation/jour-1/jour-1.md
+            gitlab-ci/presentation/jour-2/jour-2.md
