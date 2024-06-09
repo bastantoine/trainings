@@ -1,0 +1,10 @@
+# If any command fails, exit immediately with that command's exit status
+set -eo pipefail
+
+# Run flake8 against all code in the `src` directory
+./venv/bin/flake8 src
+echo "flake8 passed!"
+
+# Run black against all code in the `src` directory
+./venv/bin/black src
+echo "black passed!"
