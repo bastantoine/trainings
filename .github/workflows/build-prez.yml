@@ -3,6 +3,9 @@ name: Build presentations
 on:
   push:
     branches: ["main"]
+    paths:
+      - "git-advanced/presentation/content/*.md"
+      - "gitlab-ci/presentation/content/**.md"
 
 permissions:
   contents: read
