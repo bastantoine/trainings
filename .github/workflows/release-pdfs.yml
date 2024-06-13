@@ -75,7 +75,7 @@ jobs:
             gitlab-ci/presentation/jour-1/output/gitlab-ci-jour-1.pdf
             gitlab-ci/presentation/jour-2/output/gitlab-ci-jour-2.pdf
 
-  deploy-pages:
+  release-pdfs:
     runs-on: ubuntu-latest
     needs: build-pdf
     steps:
