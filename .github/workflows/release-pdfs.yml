@@ -79,6 +79,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build-pdf
     steps:
+      - uses: actions/checkout@v4
       - name: Download built PDFs
         uses: actions/download-artifact@v4
         with:
