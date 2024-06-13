@@ -1,0 +1,26 @@
+stages:
+  - test
+  - code quality
+
+unit tests:
+  stage: test
+  image: python:3.11
+  rules:
+    - if: $CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+  script:
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install -r requirements.txt
+    - pytest
+
+code lint:
+  stage: code quality
+  image: python:3.11
+  rules:
+    - if: $CI_COMMIT_BRANCH && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH && $CI_OPEN_MERGE_REQUESTS
+      allow_failure: true
+  script:
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install flake8
+    - flake8 accounting

@@ -1,0 +1,21 @@
+stages:
+  - test
+  - code quality
+
+unit tests:
+  stage: test
+  image: python:3.11
+  script:
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install -r requirements.txt
+    - pytest
+
+code lint:
+  stage: code quality
+  image: python:3.11
+  script:
+    - python -m venv .venv
+    - source .venv/bin/activate
+    - pip install flake8
+    - flake8 accounting
