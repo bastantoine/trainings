@@ -88,7 +88,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref_name }}
         run: |
-          - gh release create $VERSION \
-              'git-advanced/presentation/content/output/git-advanced.pdf#Git advanced.pdf' \
-              'gitlab-ci/presentation/jour-1/output/gitlab-ci-jour-1.pdf#Gitlab CI - Jour 1.pdf' \
-              'gitlab-ci/presentation/jour-2/output/gitlab-ci-jour-2.pdf#Gitlab CI - Jour 2.pdf' \
+          gh release create $VERSION \
+            'git-advanced/presentation/content/output/git-advanced.pdf#Git advanced.pdf' \
+            'gitlab-ci/presentation/jour-1/output/gitlab-ci-jour-1.pdf#Gitlab CI - Jour 1.pdf' \
+            'gitlab-ci/presentation/jour-2/output/gitlab-ci-jour-2.pdf#Gitlab CI - Jour 2.pdf' \
