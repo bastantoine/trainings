@@ -17,11 +17,14 @@ jobs:
     strategy:
       matrix:
         include:
-          - source-config-path: git-advanced/presentation/config.json
+          - name: git-advanced
+            source-config-path: git-advanced/presentation/config.json
             output-path: git-advanced/presentation/content/output/
-          - source-config-path: gitlab-ci/presentation/config.json
+          - name: gitlab-ci
+            source-config-path: gitlab-ci/presentation/config.json
             output-path: gitlab-ci/presentation/jour-*/output/
     uses: ./.github/workflows/merge-sources-files.yml
+    name: ${{ matrix.name }}
     with:
       source-config-path: ${{ matrix.source-config-path }}
       output-path: ${{ matrix.output-path }}
