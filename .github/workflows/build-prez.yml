@@ -62,9 +62,9 @@ jobs:
           name: merged-files
       - name: Generate HTML files
         run: |
-          ./marp -I git-advanced/presentation/content/output --allow-local-files --output _site
-          ./marp -I gitlab-ci/presentation/jour-1/output --allow-local-files --output _site
-          ./marp -I gitlab-ci/presentation/jour-2/output --allow-local-files --output _site
+          ./marp -I git-advanced/presentation/content/output --allow-local-files --output _site --html
+          ./marp -I gitlab-ci/presentation/jour-1/output --allow-local-files --output _site --html
+          ./marp -I gitlab-ci/presentation/jour-2/output --allow-local-files --output _site --html
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
