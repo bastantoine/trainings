@@ -4,10 +4,6 @@ on:
   push:
     tags:
       - "*"
-    paths:
-      - "git-advanced/presentation/content/*.md"
-      - "gitlab-ci/presentation/content/**.md"
-      - ".github/workflows/release-pdfs.yml"
   workflow_dispatch:
 
 permissions:
