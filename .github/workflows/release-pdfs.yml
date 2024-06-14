@@ -62,9 +62,9 @@ jobs:
           name: merged-files
       - name: Generate PDF files
         run: |
-          ./marp -I git-advanced/presentation/content/output --allow-local-files --pdf
-          ./marp -I gitlab-ci/presentation/jour-1/output --allow-local-files --pdf
-          ./marp -I gitlab-ci/presentation/jour-2/output --allow-local-files --pdf
+          ./marp -I git-advanced/presentation/content/output --allow-local-files --pdf --html
+          ./marp -I gitlab-ci/presentation/jour-1/output --allow-local-files --pdf --html
+          ./marp -I gitlab-ci/presentation/jour-2/output --allow-local-files --pdf --html
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
