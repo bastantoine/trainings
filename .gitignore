@@ -2,3 +2,4 @@
 **/*.html
 !index.html
 **/output/*
+tools/build/node_modules/

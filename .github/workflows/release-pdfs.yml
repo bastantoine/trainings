@@ -78,6 +78,9 @@ jobs:
   release-pdfs:
     runs-on: ubuntu-latest
     needs: build-pdf
+    permissions:
+      packages: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - name: Download built PDFs
