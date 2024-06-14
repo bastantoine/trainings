@@ -14,35 +14,18 @@ permissions:
 
 jobs:
   merge-source-files:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.11"
-      - name: Setup environment
-        run: |
-          python -m pip install --upgrade pip
-          pip install poetry
-          poetry config virtualenvs.in-project true
-      - name: Install dependencies
-        working-directory: tools/merge
-        run: poetry install
-      - name: Merge source files
-        working-directory: tools/merge
-        run: |
-          poetry run python merge.py ../../git-advanced/presentation/config.json
-          poetry run python merge.py ../../gitlab-ci/presentation/config.json
-      - name: Store merged files
-        uses: actions/upload-artifact@v4
-        with:
-          name: merged-files
-          retention-days: 1
-          path: |
-            git-advanced/presentation/content/output/git-advanced.md
-            gitlab-ci/presentation/jour-1/output/gitlab-ci-jour-1.md
-            gitlab-ci/presentation/jour-2/output/gitlab-ci-jour-2.md
+    strategy:
+      matrix:
+        include:
+          - source-config-path: git-advanced/presentation/config.json
+            output-path: git-advanced/presentation/content/output/
+          - source-config-path: gitlab-ci/presentation/config.json
+            output-path: gitlab-ci/presentation/jour-*/output/
+    uses: ./.github/workflows/merge-sources-files.yml
+    with:
+      source-config-path: ${{ matrix.source-config-path }}
+      output-path: ${{ matrix.output-path }}
+    secrets: inherit
 
   build:
     runs-on: ubuntu-latest
@@ -59,7 +42,7 @@ jobs:
       - name: Download merged files
         uses: actions/download-artifact@v4
         with:
-          name: merged-files
+          merge-multiple: true
       - name: Generate HTML files
         run: |
           ./marp -I git-advanced/presentation/content/output --allow-local-files --output _site --html
