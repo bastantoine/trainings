@@ -1,4 +1,4 @@
-name: Merge source files
+name: Merge source files [template]
 
 on:
   workflow_call:
