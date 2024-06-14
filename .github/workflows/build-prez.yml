@@ -6,6 +6,7 @@ on:
     paths:
       - "git-advanced/presentation/content/*.md"
       - "gitlab-ci/presentation/content/**.md"
+      - ".github/workflows/build-prez.yml"
   workflow_dispatch:
 
 permissions:
