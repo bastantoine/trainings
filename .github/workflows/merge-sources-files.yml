@@ -31,9 +31,8 @@ jobs:
         working-directory: tools/merge
         run: poetry install
       - name: Merge source files
-        working-directory: tools/merge
         run: |
-          poetry run python merge.py ${{ inputs.source-config-path }}
+          poetry run python tools/merge/merge.py ${{ inputs.source-config-path }}
       - name: Store merged files
         uses: actions/upload-artifact@v4
         with:
