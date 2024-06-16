@@ -99,7 +99,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          path: dist/
+          path: _site/
           pattern: "*-build*"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
