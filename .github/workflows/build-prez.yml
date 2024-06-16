@@ -47,10 +47,6 @@ jobs:
         with:
           merge-multiple: true
           path: dist/
-      - name: Debug
-        run: ls -lA dist/
-      - name: Debug
-        run: tree dist/
       - name: Generate HTML files
         run: |
           ./marp -I dist/ --allow-local-files --output _site --html
