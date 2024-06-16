@@ -31,5 +31,19 @@
             "output_file": "output/gitlab-ci-jour-2.md"
         }
     ],
-    "collect_destination": "./dist"
+    "collect_destination": "./dist",
+    "index_config": {
+        "language": "fr",
+        "title": "Gitlab CI",
+        "content": [
+            {
+                "name": "Day 1 slides",
+                "path": "gitlab-ci-jour-1.html"
+            },
+            {
+                "name": "Day 2 slides",
+                "path": "gitlab-ci-jour-2.html"
+            }
+        ]
+    }
 }

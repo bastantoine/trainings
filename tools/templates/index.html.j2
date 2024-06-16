@@ -27,18 +27,22 @@
           others are in english (<span class="tag is-light">🇬🇧</span>)
         </p>
         <ul>
+          {% for index_config in index_configs %}
           <li>
-            <a href="git-advanced.html">
-              Git advanced slides <span class="tag is-light">🇬🇧</span>
-            </a>
-          </li>
-          <li>
-            Gitlab CI <span class="tag is-light">🇫🇷</span>
+          {% if index_config['content'] | length > 1 %}
+            {{ index_config['title'] }} <span class="tag is-light">{% if index_config['language'] == 'fr' %}🇫🇷{% else %}🇬🇧{% endif %}</span>
             <ul>
-              <li><a href="gitlab-ci-jour-1.html">Day 1 slides</a></li>
-              <li><a href="gitlab-ci-jour-2.html">Day 2 slides</a></li>
+              {% for content in index_config['content'] %}
+              <li><a href="{{ content['path'] }}">{{ content['name'] }}</a></li>
+              {% endfor %}
             </ul>
+          {% else %}
+            <a href="{{ index_config['content'][0]['path'] }}">
+              {{ index_config['title'] }} <span class="tag is-light">{% if index_config['language'] == 'fr' %}🇫🇷{% else %}🇬🇧{% endif %}</span>
+            </a>
+          {% endif %}
           </li>
+          {% endfor %}
         </ul>
       </div>
     </section>

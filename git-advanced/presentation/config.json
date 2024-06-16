@@ -12,5 +12,15 @@
             "output_file": "output/git-advanced.md"
         }
     ],
-    "collect_destination": "./dist"
+    "collect_destination": "./dist",
+    "index_config": {
+        "language": "en",
+        "title": "Git advanced slides",
+        "content": [
+            {
+                "name": "",
+                "path": "git-advanced.html"
+            }
+        ]
+    }
 }

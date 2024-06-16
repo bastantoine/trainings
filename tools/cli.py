@@ -5,6 +5,7 @@ import shutil
 import click
 import frontmatter
 from loguru import logger
+import jinja2
 
 
 def merge_markdown_files(
@@ -81,6 +82,36 @@ def collect(config_file):
     for file in output_files:
         logger.info(f"Copying {file}")
         shutil.copy(file, destination)
+
+
+@cli.command(help="Generate index.html from template")
+@click.option(
+    "-c",
+    "--configs",
+    help="List of config files to generate the template",
+    multiple=True,
+    required=True,
+)
+@click.option(
+    "-d",
+    "--destination",
+    help="Destination of the generated file",
+    type=click.Path(exists=True),
+    required=True,
+)
+def template(configs, destination):
+    index_configs = []
+    for c in configs:
+        with open(c, "r") as f:
+            index_configs.append(json.loads(f.read())["index_config"])
+    destination = Path(destination)
+    template = jinja2.Environment(
+        loader=jinja2.FileSystemLoader("templates/")
+    ).get_template("index.html.j2")
+    content = template.render(index_configs=index_configs)
+
+    with open(destination / "index.html", mode="w", encoding="utf-8") as index:
+        index.write(content)
 
 
 if __name__ == "__main__":
