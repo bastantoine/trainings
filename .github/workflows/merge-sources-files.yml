@@ -33,7 +33,7 @@ jobs:
       - name: Merge source files
         working-directory: tools
         run: |
-          poetry run python merge.py ../${{ inputs.source-config-path }}
+          poetry run python cli.py -c ../${{ inputs.source-config-path }} merge
       - name: Store merged files
         uses: actions/upload-artifact@v4
         with:

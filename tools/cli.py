@@ -1,7 +1,7 @@
-import argparse
 import json
 from pathlib import Path
 
+import click
 import frontmatter
 from loguru import logger
 
@@ -28,12 +28,24 @@ def merge_markdown_files(
         output.write(merged)
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Merge files together.")
-    parser.add_argument("config_file", type=Path)
-    args = parser.parse_args()
+@click.group(help="CLI for managing the build and compile steps")
+@click.option(
+    "-c",
+    "--config-file",
+    type=click.Path(exists=True),
+    help="Path to the config file",
+    required=True,
+)
+@click.pass_context
+def cli(ctx, config_file):
+    ctx.ensure_object(dict)
+    ctx.obj["config_file"] = config_file
 
-    config_file = Path(args.config_file)
+
+@cli.command(help="Merge markdown files into a single file")
+@click.pass_obj
+def merge(ctx):
+    config_file = Path(ctx["config_file"])
     with open(config_file, "r") as f:
         config = json.loads(f.read())
 
@@ -48,4 +60,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    cli()
