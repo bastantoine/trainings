@@ -30,6 +30,11 @@ def merge_markdown_files(
 
 
 @click.group(help="CLI for managing the build and compile steps")
+def cli():
+    pass
+
+
+@cli.command(help="Merge markdown files into a single file")
 @click.option(
     "-c",
     "--config-file",
@@ -37,16 +42,8 @@ def merge_markdown_files(
     help="Path to the config file",
     required=True,
 )
-@click.pass_context
-def cli(ctx, config_file):
-    ctx.ensure_object(dict)
-    ctx.obj["config_file"] = config_file
-
-
-@cli.command(help="Merge markdown files into a single file")
-@click.pass_obj
-def merge(ctx):
-    config_file = Path(ctx["config_file"])
+def merge(config_file):
+    config_file = Path(config_file)
     with open(config_file, "r") as f:
         config = json.loads(f.read())
 
@@ -61,9 +58,15 @@ def merge(ctx):
 
 
 @cli.command(help="Collect generated files in a dedicated folder")
-@click.pass_obj
-def collect(ctx):
-    config_file = Path(ctx["config_file"])
+@click.option(
+    "-c",
+    "--config-file",
+    type=click.Path(exists=True),
+    help="Path to the config file",
+    required=True,
+)
+def collect(config_file):
+    config_file = Path(config_file)
     with open(config_file, "r") as f:
         config = json.loads(f.read())
 
