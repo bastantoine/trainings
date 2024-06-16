@@ -11,5 +11,6 @@
             ],
             "output_file": "output/git-advanced.md"
         }
-    ]
+    ],
+    "collect_destination": "./dist"
 }

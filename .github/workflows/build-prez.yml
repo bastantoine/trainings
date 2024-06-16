@@ -19,10 +19,10 @@ jobs:
         include:
           - name: merge-git-advanced
             source-config-path: git-advanced/presentation/config.json
-            output-path: git-advanced/presentation/content/output/
+            output-path: git-advanced/presentation/dist/
           - name: merge-gitlab-ci
             source-config-path: gitlab-ci/presentation/config.json
-            output-path: gitlab-ci/presentation/jour-*/output/
+            output-path: gitlab-ci/presentation/dist/
     uses: ./.github/workflows/merge-sources-files.yml
     name: ${{ matrix.name }}
     with:

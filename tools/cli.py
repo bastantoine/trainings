@@ -1,5 +1,6 @@
 import json
 from pathlib import Path
+import shutil
 
 import click
 import frontmatter
@@ -57,6 +58,26 @@ def merge(ctx):
         output_file = base_path / conf["output_file"]
         logger.info(f"Merging {len(input_files)} file(s) in {base_path}")
         merge_markdown_files(frontmatter_file, input_files, output_file)
+
+
+@cli.command(help="Collect generated files in a dedicated folder")
+@click.pass_obj
+def collect(ctx):
+    config_file = Path(ctx["config_file"])
+    with open(config_file, "r") as f:
+        config = json.loads(f.read())
+
+    root_path = config_file.parent
+    destination = config_file.parent / config["collect_destination"]
+    destination.mkdir(parents=True, exist_ok=True)
+    output_files = [
+        root_path / conf["base_path"] / conf["output_file"]
+        for conf in config["configs"]
+    ]
+    logger.info(f"Collecting {len(output_files)} file(s) in {destination}")
+    for file in output_files:
+        logger.info(f"Copying {file}")
+        shutil.copy(file, destination)
 
 
 if __name__ == "__main__":

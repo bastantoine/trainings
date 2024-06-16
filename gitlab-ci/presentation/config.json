@@ -30,5 +30,6 @@
             ],
             "output_file": "output/gitlab-ci-jour-2.md"
         }
-    ]
+    ],
+    "collect_destination": "./dist"
 }
