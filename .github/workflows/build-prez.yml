@@ -76,7 +76,7 @@ jobs:
       - name: Generate index.html file
         working-directory: tools
         run: |
-          python cli.py template \
+          poetry run python cli.py template \
             -d ../_site \
             -c ../git-advanced/presentation/config.json \
             -c ../gitlab-ci/presentation/config.json
